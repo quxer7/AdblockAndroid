@@ -4,6 +4,7 @@ import android.util.Base64
 
 /**
  * Created by Edsuns@qq.com on 2021/1/7.
+ * Modified by ycngmn on 19/08/2025.
  *
  * Reference: [validateChecksum.py](https://hg.adblockplus.org/adblockplus/file/tip/validateChecksum.py)
  */

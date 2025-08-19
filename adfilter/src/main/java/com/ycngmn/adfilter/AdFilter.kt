@@ -9,6 +9,7 @@ import com.ycngmn.adfilter.impl.AdFilterImpl
 
 /**
  * Created by Edsuns@qq.com on 2020/10/24.
+ * Modified by ycngmn on 19/08/2025.
  */
 interface AdFilter {
 

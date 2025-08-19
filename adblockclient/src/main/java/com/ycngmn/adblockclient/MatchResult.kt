@@ -2,6 +2,7 @@ package com.ycngmn.adblockclient
 
 /**
  * Created by Edsuns@qq.com on 2021/1/23.
+ * Modified by ycngmn on 19/08/2025.
  */
 data class MatchResult(
     /**

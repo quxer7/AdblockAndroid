@@ -2,6 +2,7 @@ package com.ycngmn.adfilter.impl
 
 /**
  * Created by Edsuns@qq.com on 2021/1/1.
+ * Modified by ycngmn on 19/08/2025.
  */
 internal object Constants {
     const val FILE_STORE_DIR = "filter_data"

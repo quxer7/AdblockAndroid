@@ -2,6 +2,7 @@ package com.ycngmn.adfilter
 
 /**
  * Created by Edsuns@qq.com on 2021/1/24.
+ * Modified by ycngmn on 19/08/2025.
  */
 interface CustomFilter : Iterator<String> {
     /**

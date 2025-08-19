@@ -18,6 +18,7 @@ import com.ycngmn.adfilter.util.Checksum
 
 /**
  * Created by Edsuns@qq.com on 2021/1/5.
+ * Modified by ycngmn on 19/08/2025.
  */
 internal class InstallationWorker(context: Context, params: WorkerParameters) : Worker(
     context,

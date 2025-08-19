@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * Created by Edsuns@qq.com on 2021/1/1.
+ * Modified by ycngmn on 19/08/2025.
  */
 @Serializable
 data class Filter(

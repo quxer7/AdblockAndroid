@@ -8,6 +8,7 @@ import com.ycngmn.adfilter.util.None
 
 /**
  * Created by Edsuns@qq.com on 2021/1/1.
+ * Modified by ycngmn on 19/08/2025.
  */
 interface FilterViewModel {
 
