@@ -1,6 +1,6 @@
 # AdblockAndroid
 
-[![](https://jitpack.io/v/Edsuns/AdblockAndroid.svg)](https://jitpack.io/#Edsuns/AdblockAndroid)
+[![](https://jitpack.io/v/quxer7/AdblockAndroid.svg)](https://jitpack.io/#quxer7/AdblockAndroid)
 
 >[!Note]
 > This project is a fork of [adblock-android](https://github.com/adblock-android/adblock-android), updated to comply with Google's new 16KB page size requirements. Obsolete dependencies have been replaced, and the code has been modernized for improved compatibility.
@@ -56,7 +56,7 @@ Add the dependency:
 
 ```groovy
 dependencies {
-    implementation 'com.github.Edsuns.AdblockAndroid:ad-filter:1.0'
+    implementation("com.github.quxer7:AdblockAndroid:1.0.0")
 }
 ```
 
