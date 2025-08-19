@@ -1,0 +1,12 @@
+jdk:
+  - openjdk17
+
+before_install:
+  - sdk update
+
+install:
+  - yes | sdkmanager --licenses
+  - sdkmanager "ndk;29.0.13846066"
+
+script:
+  - ./gradlew -Pgroup=com.github.quxer7 -Pversion=v1.0.0 publishToMavenLocal
