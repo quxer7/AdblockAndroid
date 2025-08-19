@@ -21,7 +21,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Weblo"
+rootProject.name = "AdblockAndroid"
 include(":app")
 include(":baselineprofile")
 include(":adfilter")

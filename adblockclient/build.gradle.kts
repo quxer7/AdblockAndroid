@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.ycngmn.adblockclient"
     compileSdk = 36
-    ndkVersion = "29.0.13846066"
+    ndkVersion = "28.2.13676358"
 
     defaultConfig {
         minSdk = 21

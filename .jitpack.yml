@@ -1,9 +1,0 @@
-jdk:
-  - openjdk8
-  - openjdk17
-
-before_install:
-  - export JAVA_HOME=$JAVA_HOME_8_X64
-  - yes | sdkmanager --licenses
-  - sdkmanager "ndk;29.0.13846066"
-  - export JAVA_HOME=$JAVA_HOME_17_X64
