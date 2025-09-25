@@ -56,7 +56,7 @@ Add the dependency:
 
 ```groovy
 dependencies {
-    implementation("com.github.ycngmn.AdblockAndroid:adfilter:0.0.1")
+    implementation("com.github.quxer7.AdblockAndroid:adfilter:0.0.1")
 }
 ```
 

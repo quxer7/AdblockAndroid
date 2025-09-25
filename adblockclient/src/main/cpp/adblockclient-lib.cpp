@@ -4,7 +4,7 @@
 extern "C"
 JNIEXPORT jlong
 JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_createClient(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_createClient(JNIEnv *env,
                                                                jobject) {
     auto *client = new AdBlockClient();
     return (long) client;
@@ -13,7 +13,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_createClient(JNIEnv *env,
 extern "C"
 JNIEXPORT void
 JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_releaseClient(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_releaseClient(JNIEnv *env,
                                                                 jobject,
                                                                 jlong clientPointer,
                                                                 jlong rawDataPointer,
@@ -30,7 +30,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_releaseClient(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_isGenericElementHidingEnabled(
+Java_com_quxer7_adblockclient_AdBlockClient_isGenericElementHidingEnabled(
     JNIEnv *env,
     jobject /* this */,
     jlong clientPointer
@@ -41,7 +41,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_isGenericElementHidingEnabled(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_setGenericElementHidingEnabled(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_setGenericElementHidingEnabled(JNIEnv *env,
                                                                                  jobject /* this */,
                                                                                  jlong clientPointer,
                                                                                  jboolean enabled) {
@@ -52,7 +52,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_setGenericElementHidingEnabled(JNIEn
 extern "C"
 JNIEXPORT jlong
 JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_loadBasicData(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_loadBasicData(JNIEnv *env,
                                                                 jobject,
                                                                 jlong clientPointer,
                                                                 jbyteArray data,
@@ -70,7 +70,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_loadBasicData(JNIEnv *env,
 extern "C"
 JNIEXPORT jlong
 JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_loadProcessedData(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_loadProcessedData(JNIEnv *env,
                                                                     jobject /* this */,
                                                                     jlong clientPointer,
                                                                     jbyteArray data) {
@@ -89,7 +89,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_loadProcessedData(JNIEnv *env,
 extern "C"
 JNIEXPORT jbyteArray
 JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getProcessedData(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_getProcessedData(JNIEnv *env,
                                                                    jobject /* this */,
                                                                    jlong clientPointer) {
     auto *client = (AdBlockClient *) clientPointer;
@@ -106,7 +106,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_getProcessedData(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getFiltersCount(JNIEnv *env, jobject /* this */,
+Java_com_quxer7_adblockclient_AdBlockClient_getFiltersCount(JNIEnv *env, jobject /* this */,
                                                                   jlong clientPointer) {
     auto *client = (AdBlockClient *) clientPointer;
     int count = client->numFilters
@@ -127,7 +127,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_getFiltersCount(JNIEnv *env, jobject
 
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_matches(JNIEnv *env, jobject /* this */,
+Java_com_quxer7_adblockclient_AdBlockClient_matches(JNIEnv *env, jobject /* this */,
                                                           jlong clientPointer, jstring url,
                                                           jstring firstPartyDomain,
                                                           jint filterOption) {
@@ -149,7 +149,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_matches(JNIEnv *env, jobject /* this
                                  matchedExceptionFilter->ruleDefinition : nullptr;
 
     // create java MatchResult
-    jclass match_result_class = env->FindClass("com/ycngmn/adblockclient/MatchResult");
+    jclass match_result_class = env->FindClass("com/quxer7/adblockclient/MatchResult");
     jmethodID init_id = env->GetMethodID(match_result_class, "<init>",
                                          "(ZLjava/lang/String;Ljava/lang/String;)V");
     jobject matchResult = env->NewObject(match_result_class, init_id,
@@ -182,7 +182,7 @@ jstring bytesToStringUTF(JNIEnv *env, const char *src) {
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getElementHidingSelectors(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_getElementHidingSelectors(JNIEnv *env,
                                                                             jobject /* this */,
                                                                             jlong clientPointer,
                                                                             jstring url) {
@@ -213,7 +213,7 @@ jobjectArray toStringArray(JNIEnv *env, const LinkedList<std::string> *rules) {
 
 extern "C"
 JNIEXPORT jobjectArray JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getExtendedCssSelectors(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_getExtendedCssSelectors(JNIEnv *env,
                                                                           jobject /* this */,
                                                                           jlong clientPointer,
                                                                           jstring url) {
@@ -230,7 +230,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_getExtendedCssSelectors(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jobjectArray JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getCssRules(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_getCssRules(JNIEnv *env,
                                                               jobject /* this */,
                                                               jlong clientPointer,
                                                               jstring url) {
@@ -247,7 +247,7 @@ Java_com_ycngmn_adblockclient_AdBlockClient_getCssRules(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jobjectArray JNICALL
-Java_com_ycngmn_adblockclient_AdBlockClient_getScriptlets(JNIEnv *env,
+Java_com_quxer7_adblockclient_AdBlockClient_getScriptlets(JNIEnv *env,
                                                                 jobject /* this */,
                                                                 jlong clientPointer,
                                                                 jstring url) {

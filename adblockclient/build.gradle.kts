@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ycngmn.adblockclient"
+    namespace = "com.quxer7.adblockclient"
     compileSdk = 36
     ndkVersion = "28.2.13676358"
 

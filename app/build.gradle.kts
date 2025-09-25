@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ycngmn.adblockandroid"
+    namespace = "com.quxer7.adblockandroid"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.ycngmn.adblockandroid"
+        applicationId = "com.quxer7.adblockandroid"
         minSdk = 22
         targetSdk = 36
         versionCode = 1
@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

@@ -1,0 +1,45 @@
+package com.quxer7.adfilter
+
+import com.quxer7.adfilter.util.sha1
+import kotlinx.serialization.Serializable
+
+/**
+ * Created by Edsuns@qq.com on 2021/1/1.
+ * Modified by quxer7 on 19/08/2025.
+ */
+@Serializable
+data class Filter(
+    val url: String,
+) {
+    val id by lazy { url.sha1 }
+
+    var name: String = ""
+        internal set
+
+    var isEnabled: Boolean = false
+        internal set
+
+    var downloadState = DownloadState.NONE
+        internal set
+
+    var updateTime: Long = -1L
+        internal set
+
+    var filtersCount: Int = 0
+        internal set
+
+    var checksum: String = ""
+        internal set
+
+    fun hasDownloaded() = updateTime > 0
+}
+
+enum class DownloadState {
+    ENQUEUED, DOWNLOADING, INSTALLING, SUCCESS, FAILED, CANCELLED, NONE;
+
+    val isRunning
+        get() = when (this) {
+            ENQUEUED, DOWNLOADING, INSTALLING -> true
+            else -> false
+        }
+}
