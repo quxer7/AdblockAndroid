@@ -19,3 +19,8 @@
 -keepclasseswithmembers class com.quxer7.adfilter.adfilter.** { # <-- change package name to your app's
     kotlinx.serialization.KSerializer serializer(...);
 }
+
+-keep class com.anthonycr.mezzanine.** { *; }
+-keepnames class com.anthonycr.mezzanine.**
+-keepclassmembers class com.anthonycr.mezzanine.** { *; }
+-dontwarn com.anthonycr.mezzanine.**
