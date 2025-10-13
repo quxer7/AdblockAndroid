@@ -1,6 +1,6 @@
 # ProGuard rules for Kotlin Serialization
 
--keepattributes *Annotation*, InnerClasses
+-keepattributes InnerClasses
 -dontnote kotlinx.serialization.AnnotationsKt # core serialization annotations
 
 # kotlinx-serialization-json specific. Add this if you have java.lang.NoClassDefFoundError kotlinx.serialization.json.JsonObjectSerializer
@@ -20,7 +20,5 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
--keep class com.anthonycr.mezzanine.** { *; }
--keepnames class com.anthonycr.mezzanine.**
--keepclassmembers class com.anthonycr.mezzanine.** { *; }
--dontwarn com.anthonycr.mezzanine.**
+
+-keep class com.quxer7.adfilter.script.** { *; }
