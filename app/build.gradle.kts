@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.quxer7.adblockandroid"
-        minSdk = 22
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "0.0.1"
