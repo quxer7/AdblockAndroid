@@ -4,8 +4,10 @@
 extern "C"
 JNIEXPORT jlong
 JNICALL
-Java_com_quxer7_adblockclient_AdBlockClient_createClient(JNIEnv *env,
-                                                               jobject) {
+Java_com_quxer7_adblockclient_AdBlockClient_createClient(
+        JNIEnv *env,
+        jobject
+) {
     auto *client = new AdBlockClient();
     return (long) client;
 }
@@ -13,16 +15,14 @@ Java_com_quxer7_adblockclient_AdBlockClient_createClient(JNIEnv *env,
 extern "C"
 JNIEXPORT void
 JNICALL
-Java_com_quxer7_adblockclient_AdBlockClient_releaseClient(JNIEnv *env,
-                                                                jobject,
-                                                                jlong clientPointer,
-                                                                jlong rawDataPointer,
-                                                                jlong processedDataPointer) {
+Java_com_quxer7_adblockclient_AdBlockClient_releaseClient(
+        JNIEnv *env,
+        jobject,
+        jlong clientPointer,
+        jlong processedDataPointer
+) {
     auto *client = (AdBlockClient *) clientPointer;
     delete client;
-
-    char *rawData = (char *) rawDataPointer;
-    delete[] rawData;
 
     char *processedData = (char *) processedDataPointer;
     delete[] processedData;
@@ -41,31 +41,40 @@ Java_com_quxer7_adblockclient_AdBlockClient_isGenericElementHidingEnabled(
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_quxer7_adblockclient_AdBlockClient_setGenericElementHidingEnabled(JNIEnv *env,
-                                                                                 jobject /* this */,
-                                                                                 jlong clientPointer,
-                                                                                 jboolean enabled) {
+Java_com_quxer7_adblockclient_AdBlockClient_setGenericElementHidingEnabled(
+        JNIEnv *env,
+        jobject /* this */,
+        jlong clientPointer,
+        jboolean enabled
+) {
     auto *client = (AdBlockClient *) clientPointer;
     client->isGenericElementHidingEnabled = enabled;
 }
 
 extern "C"
-JNIEXPORT jlong
-JNICALL
-Java_com_quxer7_adblockclient_AdBlockClient_loadBasicData(JNIEnv *env,
-                                                                jobject,
-                                                                jlong clientPointer,
-                                                                jbyteArray data,
-                                                                jboolean preserveRules) {
-    int dataLength = env->GetArrayLength(data);
-    char *dataChars = new char[dataLength];
-    env->GetByteArrayRegion(data, 0, dataLength, reinterpret_cast<jbyte *>(dataChars));
+JNIEXPORT void JNICALL
+Java_com_quxer7_adblockclient_AdBlockClient_loadBasicData(
+        JNIEnv *env,
+        jobject /* this */,
+        jlong clientPointer,
+        jbyteArray data,
+        jboolean preserveRules
+) {
+    jsize dataLength = env->GetArrayLength(data);
+    jbyte *bytes = env->GetByteArrayElements(data, nullptr);
 
-    auto *client = (AdBlockClient *) clientPointer;
+    char *dataChars = new char[dataLength + 1];
+    memcpy(dataChars, bytes, dataLength);
+    dataChars[dataLength] = '\0'; // IMPORTANT
+
+    env->ReleaseByteArrayElements(data, bytes, JNI_ABORT);
+
+    auto *client = reinterpret_cast<AdBlockClient *>(clientPointer);
     client->parse(dataChars, preserveRules);
 
-    return (long) dataChars;
+    delete[] dataChars;
 }
+
 
 extern "C"
 JNIEXPORT jlong

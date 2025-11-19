@@ -29,12 +29,10 @@ import androidx.core.net.toUri
 class AdBlockClient(override val id: String) : Client {
 
     private val nativeClientPointer: Long
-    private var rawDataPointer: Long
     private var processedDataPointer: Long
 
     init {
         nativeClientPointer = createClient()
-        rawDataPointer = 0
         processedDataPointer = 0
     }
 
@@ -44,7 +42,7 @@ class AdBlockClient(override val id: String) : Client {
      * @param data requires UTF-8 bytes
      */
     fun loadBasicData(data: ByteArray, preserveRules: Boolean = false) {
-        rawDataPointer = loadBasicData(nativeClientPointer, data, preserveRules)
+        loadBasicData(nativeClientPointer, data, preserveRules)
     }
 
     override var isGenericElementHidingEnabled: Boolean
@@ -59,7 +57,7 @@ class AdBlockClient(override val id: String) : Client {
         clientPointer: Long,
         data: ByteArray,
         preserveRules: Boolean
-    ): Long
+    )
 
     fun loadProcessedData(data: ByteArray) {
         processedDataPointer = loadProcessedData(nativeClientPointer, data)
@@ -113,12 +111,11 @@ class AdBlockClient(override val id: String) : Client {
 
     @Suppress("unused", "protectedInFinal")
     protected fun finalize() {
-        releaseClient(nativeClientPointer, rawDataPointer, processedDataPointer)
+        releaseClient(nativeClientPointer, processedDataPointer)
     }
 
     private external fun releaseClient(
         clientPointer: Long,
-        rawDataPointer: Long,
         processedDataPointer: Long
     )
 
